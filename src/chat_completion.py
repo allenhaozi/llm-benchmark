@@ -40,18 +40,19 @@ class ChatCompletion:
             temperature=0.1,
             max_tokens=128,
             top_p=1,
-            stop=["<|im_end|>", "<|endoftext|>"],
+            stop=self.stop,
         )
 
         return res["choices"][0]["message"]["content"]
 
 
 if __name__ == "__main__":
-    for endpoint in openai_endpoints.values():
+    for env, endpoint in openai_endpoints.items():
         for loop in range(1, 10):
             length = 1024 * loop
             prompt_list = get_prompt(length)
             for prompt_item in prompt_list:
                 chat_completion = ChatCompletion(endpoint)
+                print(endpoint)
                 res = chat_completion.send_chat(prompt_item["prompt"])
-                print(res)
+                print(f"env: {env}, length: {length}, response: {res}")

@@ -13,3 +13,6 @@ class OpenAIEndpoint:
         self.model = model
         self.enable_chat = enable_chat
         self.stop = stop
+
+    def __str__(self):
+        return f"model: {self.model}, server: {self.server}, stop: {self.stop}"
