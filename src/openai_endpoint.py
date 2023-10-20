@@ -6,12 +6,12 @@ class OpenAIEndpoint:
         self,
         server: str,
         model: str,
-        enable_chat: Optional[bool] = True,
+        enable: Optional[bool] = True,
         stop: Optional[list] = None,
     ):
         self.server = server
         self.model = model
-        self.enable_chat = enable_chat
+        self.enable = enable
         self.stop = stop
 
     def __str__(self):
